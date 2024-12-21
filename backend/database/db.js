@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: 'Amitdogra',
-    database: 'task_management',
+    database: 'Test_Project_MERN_Stack',
   });
 
   db.connect((err) => {
