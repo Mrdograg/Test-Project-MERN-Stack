@@ -1,51 +1,30 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/db');
-
-const User = sequelize.define('User', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true, 
-    },
-    permalink: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true, 
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true, 
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-    },
-    enabled: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true, 
-    },
-    deleted: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false, 
-    },
-    createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false, 
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false, 
-    },
-}, {
-    tableName: 'User', 
-    timestamps: true, 
-});
-
-module.exports = User;
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  User.init({
+    permalink: DataTypes.STRING,
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    enabled: DataTypes.BOOLEAN,
+    deleted: DataTypes.BOOLEAN,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'User',
+  });
+  return User;
+};

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Amitdogra",
+    "database": "Test_Project_MERN_Stack",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Amitdogra",
+    "database": "Test_Project_MERN_Stack",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Amitdogra",
+    "database": "Test_Project_MERN_Stack",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
