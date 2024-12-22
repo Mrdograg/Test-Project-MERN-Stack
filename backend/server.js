@@ -2,17 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { User } = require('./models');
-const { sequelize } = require('./models');
 const { Op } = require('sequelize');
 const app = express();
 const Port = 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
-sequelize.sync();
 
-// Fetch all users with pagination, filters, and search
-app.get('/', async (req, res) => {
+app.get('/', async (req, res) => { // Fetch all with pagination, filters feature
   const { limit = 5, offset = 0, filter, search, sortKey = 'id', sortOrder = 'ASC' } = req.query;
 
   const whereClause = {};
@@ -33,8 +30,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Fetch a single user by ID
-app.get('/:id', async (req, res) => {
+app.get('/:id', async (req, res) => { // Fetch a user
   const { id } = req.params;
   try {
     const user = await User.findByPk(id);
@@ -48,8 +44,7 @@ app.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new user
-app.post('/', async (req, res) => {
+app.post('/', async (req, res) => { // Create a user
   const { permalink, name, email, password, enabled, deleted } = req.body;
 
   if (!permalink || !name || !email || !password || enabled === undefined || deleted === undefined) {
@@ -74,8 +69,7 @@ app.post('/', async (req, res) => {
   }
 });
 
-// Update a user by ID
-app.put('/:id', async (req, res) => {
+app.put('/:id', async (req, res) => { //update a user with complete details
   const { id } = req.params;
   const { permalink, name, email, password, enabled, deleted } = req.body;
 
@@ -107,8 +101,7 @@ app.put('/:id', async (req, res) => {
   }
 });
 
-// Partially update a user by ID
-app.patch('/:id', async (req, res) => {
+app.patch('/:id', async (req, res) => { // partially update a user
   const { id } = req.params;
   const fieldsToUpdate = req.body;
 
@@ -126,8 +119,7 @@ app.patch('/:id', async (req, res) => {
   }
 });
 
-// Delete a user by ID
-app.delete('/:id', async (req, res) => {
+app.delete('/:id', async (req, res) => { //delete a user
   const { id } = req.params;
 
   try {
@@ -145,7 +137,6 @@ app.delete('/:id', async (req, res) => {
   }
 });
 
-// Start the server
 app.listen(Port, () => {
   console.log(`Server is running at port ${Port}`);
 });
