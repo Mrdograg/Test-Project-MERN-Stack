@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', async (req, res) => { // Fetch all with pagination, filters feature
-  const { limit = 5, offset = 0, filter, search, sortKey = 'id', sortOrder = 'ASC' } = req.query;
+  const { limit = 6, offset = 0, filter, search, sortKey = 'id', sortOrder = 'ASC' } = req.query;
 
   const whereClause = {};
   if (filter) whereClause.enabled = filter === 'true';

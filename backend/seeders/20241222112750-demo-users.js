@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('Users', [
       {
         permalink: 'user-1',
-        name: 'Amit DOgra',
+        name: 'Amit Dogra',
         email: 'dogra00amit@gmail.com',
         password: 'password1',
         enabled: true,
@@ -51,11 +51,21 @@ module.exports = {
         name: 'Hima Dogra',
         email: 'dogra00sdpro.@example.com',
         password: 'password5',
-        enabled: true,
-        deleted: false,
+        enabled: false,
+        deleted: true,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        permalink: 'user-6',
+        name: 'MEGHA YADAV',
+        email: 'MEegha.@example.com',
+        password: 'Megha yadav',
+        enabled: false,
+        deleted: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+       } ,
       
     ], {});
   },
